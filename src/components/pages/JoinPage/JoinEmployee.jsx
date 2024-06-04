@@ -4,6 +4,9 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import { imageUpload } from "../../utils";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
 
 const JoinEmployee = () => {
   const {
@@ -13,7 +16,7 @@ const JoinEmployee = () => {
     setLoading,
     signInWithGoogle,
   } = useAuth();
-
+  const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -22,15 +25,21 @@ const JoinEmployee = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const image = form.image.files[0];
-
+    const date = startDate.selected;
+    // const image = form.image.files[0];
+    // const employee = {
+    //   name: user?.displayName,
+    //   image: user?.photoURL,
+    //   email: user?.email,
+    // };
     form.reset();
-    console.log(name, email, password, image);
+    // console.log(name, email, password, date, employee);
     try {
       setLoading(true);
-      const img_url = await imageUpload(image);
+      // const img_url = await imageUpload(image);
       await createUser(email, password);
-      await updateUserProfile(name, img_url);
+      await updateUserProfile(name);
+      // await updateUserProfile(name, img_url);
       toast.success("Account created successfully");
       setLoading(false);
       navigate("/");
@@ -46,6 +55,12 @@ const JoinEmployee = () => {
     setLoading(false);
     navigate("/");
   };
+
+  // const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+  //   <button className="example-custom-input" onClick={onClick} ref={ref}>
+  //     {value}
+  //   </button>
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
@@ -60,18 +75,18 @@ const JoinEmployee = () => {
           <div className="space-y-4">
             <div>
               <label htmlFor="name" className="block mb-2 text-sm">
-                Name
+                Full Name
               </label>
               <input
                 type="text"
                 name="name"
                 id="name"
                 placeholder="Enter Your Name Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="image" className="block mb-2 text-sm">
                 Select Image:
               </label>
@@ -82,7 +97,7 @@ const JoinEmployee = () => {
                 name="image"
                 accept="image/*"
               />
-            </div>
+            </div> */}
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
                 Email address
@@ -93,7 +108,7 @@ const JoinEmployee = () => {
                 id="email"
                 required
                 placeholder="Enter Your Email Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
             </div>
@@ -110,7 +125,23 @@ const JoinEmployee = () => {
                 id="password"
                 required
                 placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block mb-2 text-sm">
+                Date of Birth
+              </label>
+              <DatePicker
+                className="min-w-80 px-3 py-2 p-2  font-semibold rounded-md bg-gray-200 focus:outline-[#064694] text-gray-900"
+                placeholderText="Select Date"
+                selected={startDate}
+                dateFormat="dd/MM/yyyy"
+                showMonthDropdown
+                showYearDropdown
+                scrollableMonthYearDropdown
+                startDate={startDate}
+                onChange={(date) => setStartDate(date)}
               />
             </div>
           </div>
@@ -121,9 +152,12 @@ const JoinEmployee = () => {
               className="bg-[#064694] w-full  rounded-md py-3 text-white"
             >
               {loading ? (
-                <TbFidgetSpinner size={24} className="animate-spin m-auto" />
+                <TbFidgetSpinner
+                  size={24}
+                  className="animate-spin font-bold  m-auto"
+                />
               ) : (
-                "Join"
+                "Sign Up"
               )}
             </button>
           </div>
@@ -146,7 +180,7 @@ const JoinEmployee = () => {
           <p>Continue with Google</p>
         </button>
         <p className="px-6 text-sm text-center text-gray-400">
-          Already have an account?{" "}
+          Already have an account?
           <Link
             to="/login"
             className="hover:underline hover:text-[#064694] text-gray-600"
