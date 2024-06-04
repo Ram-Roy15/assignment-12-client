@@ -6,6 +6,7 @@ import JoinEmployee from "../pages/JoinPage/JoinEmployee";
 import JoinManager from "../pages/JoinPage/JoinManager";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
+import PrivateRouter from "./PrivateRouter";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivateRouter>
+            <Profile></Profile>
+          </PrivateRouter>
+        ),
       },
     ],
   },

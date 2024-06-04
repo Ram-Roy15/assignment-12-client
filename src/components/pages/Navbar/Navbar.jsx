@@ -15,7 +15,7 @@ const Navbar = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -25,7 +25,10 @@ const Navbar = () => {
       <div className="container px-6 py-2 mx-auto">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">
-            <a className="flex items-center hover:bg-slate-100 rounded-lg pe-4">
+            <Link
+              to={"/"}
+              className="flex items-center hover:bg-slate-100 rounded-lg pe-4"
+            >
               <img
                 className="w-auto rounded-lg h-16 "
                 src="https://i.ibb.co/vYRnLWM/Whats-App-Image-2024-06-03-at-10-21-24-PM-removebg-preview.png"
@@ -34,7 +37,7 @@ const Navbar = () => {
               <p className="text-2xl font-bold text-[#064694]">
                 Calud<span className="text-[#f2a827]">II</span>
               </p>
-            </a>
+            </Link>
 
             {/* <!-- Mobile menu button --> */}
             <div className="flex lg:hidden">
