@@ -1,7 +1,11 @@
+import Footer from "../Footer/Footer";
+import Carosel from "./Banner/Carosel";
+
 const Home = () => {
   return (
     <div>
-      <h1>this is home page</h1>
+      <Carosel></Carosel>
+      <Footer></Footer>
     </div>
   );
 };
