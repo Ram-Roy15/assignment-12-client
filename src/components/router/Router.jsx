@@ -5,6 +5,7 @@ import Home from "../pages/Home/Home";
 import JoinEmployee from "../pages/JoinPage/JoinEmployee";
 import JoinManager from "../pages/JoinPage/JoinManager";
 import Login from "../pages/Login/Login";
+import Profile from "../pages/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
       },
     ],
   },
