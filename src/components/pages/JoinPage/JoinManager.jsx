@@ -4,7 +4,9 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import { imageUpload } from "../../utils";
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
-
+import ReactDatePicker from "react-datepicker";
+import { useState } from "react";
+import Select from "react-select";
 const JoinManager = () => {
   const {
     createUser,
@@ -13,9 +15,13 @@ const JoinManager = () => {
     setLoading,
     signInWithGoogle,
   } = useAuth();
-
+  const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
-
+  const options = [
+    { value: "chocolate", label: "5 Members for $5" },
+    { value: "strawberry", label: "10 Members for $8" },
+    { value: "vanilla", label: "20 Members for $15" },
+  ];
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -67,13 +73,26 @@ const JoinManager = () => {
                 name="name"
                 id="name"
                 placeholder="Enter Your Name Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694]  bg-gray-200 text-gray-900"
+                data-temp-mail-org="0"
+              />
+            </div>
+            <div>
+              <label htmlFor="name" className="block mb-2 text-sm">
+                Company Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter Your Name Here"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694]  bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
             </div>
             <div>
               <label htmlFor="image" className="block mb-2 text-sm">
-                Select Image:
+                Company Logo
               </label>
               <input
                 required
@@ -93,7 +112,7 @@ const JoinManager = () => {
                 id="email"
                 required
                 placeholder="Enter Your Email Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
             </div>
@@ -110,7 +129,32 @@ const JoinManager = () => {
                 id="password"
                 required
                 placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block mb-2 text-sm">
+                Date of Birth
+              </label>
+              <ReactDatePicker
+                className="min-w-80 px-3 py-2 p-2  font-semibold rounded-md bg-gray-200 focus:outline-[#064694] text-gray-900"
+                placeholderText="Select Date"
+                selected={startDate}
+                dateFormat="dd/MM/yyyy"
+                showMonthDropdown
+                showYearDropdown
+                scrollableMonthYearDropdown
+                startDate={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
+            </div>
+            <div>
+              <label htmlFor="options" className="text-sm mb-2">
+                Select a Package
+              </label>
+              <Select
+                className="w-full  border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
+                options={options}
               />
             </div>
           </div>
@@ -123,7 +167,7 @@ const JoinManager = () => {
               {loading ? (
                 <TbFidgetSpinner size={24} className="animate-spin m-auto" />
               ) : (
-                "Join"
+                "Sign Up"
               )}
             </button>
           </div>
