@@ -17,7 +17,7 @@ const Slide2 = ({ image, text }) => {
           <br />
           <Link
             to={"/join-employees"}
-            className="px-5 py-4 mt-4 text-sm  font-medium capitalize transition-colors duration-300 transform bg-[#56c790] rounded-md  lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500"
+            className="px-5 py-4 mt-4 text-sm  text-white font-medium capitalize transition-colors duration-300 transform bg-[#064694] rounded-md  lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500"
           >
             Join as Employee
           </Link>
