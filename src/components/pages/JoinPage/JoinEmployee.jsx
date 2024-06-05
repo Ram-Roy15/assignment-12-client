@@ -1,12 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { TbFidgetSpinner } from "react-icons/tb";
-import { imageUpload } from "../../utils";
+
 import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
+import axios from "axios";
 
 const JoinEmployee = () => {
   const {
@@ -17,6 +18,7 @@ const JoinEmployee = () => {
     signInWithGoogle,
   } = useAuth();
   const [startDate, setStartDate] = useState(new Date());
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,26 +28,28 @@ const JoinEmployee = () => {
     const email = form.email.value;
     const password = form.password.value;
     const date = startDate.selected;
-    // const image = form.image.files[0];
-    // const employee = {
-    //   name: user?.displayName,
-    //   image: user?.photoURL,
-    //   email: user?.email,
-    // };
+    const employee = {
+      name,
+
+      email: user?.email,
+      role: "employee",
+      status: "Varified",
+      password,
+      date,
+    };
+    console.log(employee);
     form.reset();
-    // console.log(name, email, password, date, employee);
     try {
       setLoading(true);
-      // const img_url = await imageUpload(image);
       await createUser(email, password);
       await updateUserProfile(name);
-      // await updateUserProfile(name, img_url);
+      await axios.put(`${import.meta.env.VITE_API_URL}/employee`, employee);
       toast.success("Account created successfully");
       setLoading(false);
       navigate("/");
     } catch (error) {
       console.log(error);
-      // toast.error("Something went wrong", error.message);
+      toast.error(error.message);
     }
   };
   const loginWithGoogle = async () => {

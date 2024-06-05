@@ -12,6 +12,7 @@ const JoinManager = () => {
     createUser,
     updateUserProfile,
     loading,
+    user,
     setLoading,
     signInWithGoogle,
   } = useAuth();
@@ -25,18 +26,25 @@ const JoinManager = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    const username = form.username.value;
+    const company = form.company_name.value;
     const email = form.email.value;
     const password = form.password.value;
     const image = form.image.files[0];
-
+    const img_url = await imageUpload(image);
+    const manager = {
+      username,
+      email: user ? user.email : email,
+      img_url,
+      company,
+      startDate,
+    };
     form.reset();
-    console.log(name, email, password, image);
+    console.log(manager);
     try {
       setLoading(true);
-      const img_url = await imageUpload(image);
       await createUser(email, password);
-      await updateUserProfile(name, img_url);
+      await updateUserProfile(username);
       toast.success("Account created successfully");
       setLoading(false);
       navigate("/");
@@ -70,7 +78,7 @@ const JoinManager = () => {
               </label>
               <input
                 type="text"
-                name="name"
+                name="username"
                 id="name"
                 placeholder="Enter Your Name Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694]  bg-gray-200 text-gray-900"
@@ -83,9 +91,9 @@ const JoinManager = () => {
               </label>
               <input
                 type="text"
-                name="name"
-                id="name"
-                placeholder="Enter Your Name Here"
+                name="company_name"
+                id="company"
+                placeholder="Enter Your Company Name Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694]  bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />

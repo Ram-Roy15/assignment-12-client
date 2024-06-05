@@ -74,7 +74,7 @@ const AuthProvider = ({ children }) => {
       status: "Varified",
     };
     const { data } = await axios.put(
-      `${import.meta.env.VITE_API_URL}/user`,
+      `${import.meta.env.VITE_API_URL}/manager`,
       currentUser
       // { withCredentials: true }
     );

@@ -13,7 +13,7 @@ const Profile = () => {
       <div className="bg-white shadow-lg rounded-2xl w-3/5">
         <img
           alt="profile"
-          src="https://wallpapercave.com/wp/wp10784415.jpg"
+          src="https://i.ibb.co/3r1mHcM/image.png"
           className="w-full mb-4 rounded-t-lg h-36"
         />
         <div className="flex flex-col items-center justify-center p-4 -mt-16">
