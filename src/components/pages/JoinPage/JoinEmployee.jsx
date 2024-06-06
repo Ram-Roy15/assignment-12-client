@@ -7,20 +7,21 @@ import useAuth from "../../hooks/useAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
-import axios from "axios";
+import useAxiosCommon from "../../hooks/useAxiosSecure";
 
 const JoinEmployee = () => {
   const {
     createUser,
     updateUserProfile,
     loading,
+    user,
     setLoading,
     signInWithGoogle,
   } = useAuth();
+  console.log();
   const [startDate, setStartDate] = useState(new Date());
-  const { user } = useAuth();
   const navigate = useNavigate();
-
+  const axiosCommon = useAxiosCommon();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -30,7 +31,7 @@ const JoinEmployee = () => {
     const date = startDate.selected;
     const employee = {
       name,
-      email: user?.email,
+      email,
       role: "employee",
       status: "Varified",
       password,
@@ -42,7 +43,7 @@ const JoinEmployee = () => {
       setLoading(true);
       await createUser(email, password);
       await updateUserProfile(name);
-      await axios.put(`${import.meta.env.VITE_API_URL}/employee`, employee);
+      await axiosCommon.put(`/employee`, employee);
       toast.success("Account created successfully");
       setLoading(false);
       navigate("/");
@@ -54,15 +55,22 @@ const JoinEmployee = () => {
   const loginWithGoogle = async () => {
     setLoading(true);
     await signInWithGoogle();
+
+    const employee = {
+      name: user?.displayName,
+      email: user?.email,
+      role: "employee",
+      status: "Varified",
+      password: user?.uid,
+      date: startDate,
+    };
+    console.log(employee);
+    await axiosCommon.put(`/employee`, employee);
     toast.success("Account created successfully");
+
     setLoading(false);
     navigate("/");
   };
-
-  // const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
-  //   <button className="example-custom-input" onClick={onClick} ref={ref}>
-  //     {value}
-  //   </button>
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -89,18 +97,7 @@ const JoinEmployee = () => {
                 data-temp-mail-org="0"
               />
             </div>
-            {/* <div>
-              <label htmlFor="image" className="block mb-2 text-sm">
-                Select Image:
-              </label>
-              <input
-                required
-                type="file"
-                id="image"
-                name="image"
-                accept="image/*"
-              />
-            </div> */}
+
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
                 Email address

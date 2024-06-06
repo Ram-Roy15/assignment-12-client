@@ -70,11 +70,12 @@ const AuthProvider = ({ children }) => {
   const saveUser = async (user) => {
     const currentUser = {
       email: user?.email,
-      role: "guest",
-      status: "Varified",
+      name: user?.displayName,
+      photo: user?.photoURL,
+      role: user?.role,
     };
     const { data } = await axios.put(
-      `${import.meta.env.VITE_API_URL}/manager`,
+      `${import.meta.env.VITE_API_URL}/user`,
       currentUser
       // { withCredentials: true }
     );

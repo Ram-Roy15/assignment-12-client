@@ -6,11 +6,10 @@ import useRole from "../../hooks/useRole";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
-  const [role, isLoading] = useRole();
-  console.log(role);
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+
+  const [role, isLosding] = useRole();
+  if (isLosding) return <div>Loading...</div>;
+
   const navLinks = (
     <div className="flex items-center gap-3">
       <Link to={"/"}>
@@ -32,20 +31,6 @@ const Navbar = () => {
           </Link>
         </>
       )}
-      {/* {role === "employee" && (
-        <>
-          <Link to={"/"}>
-            <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
-              <a>My Assets</a>
-            </button>
-          </Link>
-          <Link to={"/"}>
-            <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
-              <a>My Team</a>
-            </button>
-          </Link>
-        </>
-      )} */}
       {role === "manager" && (
         <>
           <Link to={"/"}>
@@ -61,6 +46,21 @@ const Navbar = () => {
           <Link to={"/"}>
             <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
               <a>All Requests</a>
+            </button>
+          </Link>
+        </>
+      )}
+
+      {role === "employee" && (
+        <>
+          <Link to={"/"}>
+            <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
+              <a>My Assets</a>
+            </button>
+          </Link>
+          <Link to={"/"}>
+            <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
+              <a>My Team</a>
             </button>
           </Link>
         </>
@@ -149,43 +149,35 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content  drop-shadow-md mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-60"
+              className="menu menu-sm dropdown-content drop-shadow-md mt-3 z-[10] p-2  me-5 shadow bg-base-100 rounded-box w-60"
             >
-              <h1 className="mb-2 bg-[#f79902] shadow-xl p-3 rounded-md">
-                <p className="text-center  uppercase font-bold">{user.email}</p>
+              <h1 className="mb-2 bg-[#f79902] md:w-56 shadow-xl p-2 rounded-md">
+                <p className="text-center   font-semibold">{user.email}</p>
               </h1>
               <Link
                 to={"/"}
-                className="btn bg-[#0545ab] text-white btn-sm font-bold"
+                className="btn bg-[#0545ab] text-white md:w-56  btn-sm  font-bold"
               >
                 Custom Request List
               </Link>
               <Link
                 to={"/"}
-                className="btn bg-[#0545ab] text-white btn-sm font-bold"
+                className="btn bg-[#0545ab] text-white md:w-56  btn-sm  font-bold"
               >
                 My Employee List
               </Link>
               <Link
                 to={"/"}
-                className="btn bg-[#0545ab] text-white btn-sm font-bold"
+                className="btn bg-[#0545ab] text-white md:w-56  btn-sm  font-bold"
               >
                 Add an Employee
               </Link>
               <Link
                 to={"/profile"}
-                className="btn bg-[#0545ab] text-white btn-sm font-bold"
+                className="btn bg-[#0545ab] text-white md:w-56  btn-sm  font-bold"
               >
                 Profile
               </Link>
-              <li>
-                <button
-                  onClick={handleLogOut}
-                  className="btn bg-[#0545ab] text-white btn-sm font-bold"
-                >
-                  Logout
-                </button>
-              </li>
             </ul>
           </div>
         )}
@@ -204,25 +196,27 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content  drop-shadow-md mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-60"
             >
-              <h1 className="mb-2 shadow-xl p-3 rounded-md">
-                <p className="text-center uppercase font-bold">{user.email}</p>
+              <h1 className="mb-2 shadow-xl p-2 md:w-56 rounded-md">
+                <p className="text-center text-sm  font-semibold">
+                  {user.email}
+                </p>
               </h1>
               <Link
                 to={"/"}
-                className="btn bg-[#0545ab] text-white btn-sm font-bold"
+                className="btn bg-[#0545ab] text-white  md:w-56 btn-sm font-bold"
               >
                 Request for an Assets
               </Link>
               <Link
                 to={"/profile"}
-                className="btn bg-[#0545ab] text-white btn-sm font-bold"
+                className="btn bg-[#0545ab] text-white md:w-56 btn-sm font-bold"
               >
                 Profile
               </Link>
               <li>
                 <button
                   onClick={handleLogOut}
-                  className="btn bg-[#0545ab] text-white btn-sm font-bold"
+                  className="btn bg-[#0545ab] text-white md:w-56 btn-sm font-bold"
                 >
                   Logout
                 </button>
