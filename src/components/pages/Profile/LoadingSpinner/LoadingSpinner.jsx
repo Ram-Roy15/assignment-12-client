@@ -2,11 +2,14 @@ import { DNA } from "react-loader-spinner";
 
 const LoadingSpinner = () => {
   return (
-    <div>
+    <div className="w-screen  h-screen flex justify-center items-center">
       <DNA
         visible={true}
-        height="80"
-        width="80"
+        height="150"
+        width="150"
+        color="#4fa94d"
+        type="ThreeDots"
+        timeout={10000}
         ariaLabel="dna-loading"
         wrapperStyle={{}}
         wrapperClass="dna-wrapper"

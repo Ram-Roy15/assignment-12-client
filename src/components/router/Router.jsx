@@ -7,6 +7,7 @@ import JoinManager from "../pages/JoinPage/JoinManager";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
 import PrivateRouter from "./PrivateRouter";
+import AddAssets from "../pages/HR_Pages/AddAssets";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Profile></Profile>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/add-assets",
+        element: (
+          <PrivateRouter>
+            <AddAssets></AddAssets>
           </PrivateRouter>
         ),
       },

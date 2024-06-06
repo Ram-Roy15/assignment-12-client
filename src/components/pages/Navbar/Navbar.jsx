@@ -38,7 +38,7 @@ const Navbar = () => {
               <a> Assets List</a>
             </button>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/add-assets"}>
             <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
               <a>Add an Asset</a>
             </button>
@@ -178,6 +178,14 @@ const Navbar = () => {
               >
                 Profile
               </Link>
+              <li>
+                <button
+                  onClick={handleLogOut}
+                  className="btn bg-[#0545ab] text-white md:w-56 btn-sm font-bold"
+                >
+                  Logout
+                </button>
+              </li>
             </ul>
           </div>
         )}
