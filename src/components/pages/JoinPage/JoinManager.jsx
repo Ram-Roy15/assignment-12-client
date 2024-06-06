@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import ReactDatePicker from "react-datepicker";
 import { useState } from "react";
 import Select from "react-select";
+import useAxiosCommon from "../../hooks/useAxiosCommon";
 const JoinManager = () => {
   const {
     createUser,
@@ -17,6 +18,7 @@ const JoinManager = () => {
     signInWithGoogle,
   } = useAuth();
   const [startDate, setStartDate] = useState(new Date());
+  const axiosCommon = useAxiosCommon();
   const navigate = useNavigate();
   const options = [
     { value: "chocolate", label: "5 Members for $5" },
@@ -28,6 +30,7 @@ const JoinManager = () => {
     const form = e.target;
     const username = form.username.value;
     const company = form.company_name.value;
+
     const email = form.email.value;
     const password = form.password.value;
     const image = form.image.files[0];
@@ -37,6 +40,7 @@ const JoinManager = () => {
       email: user ? user.email : email,
       img_url,
       company,
+      role: "manager",
       startDate,
     };
     form.reset();
@@ -44,6 +48,7 @@ const JoinManager = () => {
     try {
       setLoading(true);
       await createUser(email, password);
+      await axiosCommon.put(`/employee`, manager);
       await updateUserProfile(username);
       toast.success("Account created successfully");
       setLoading(false);

@@ -31,7 +31,7 @@ const JoinEmployee = () => {
     const date = startDate.selected;
     const employee = {
       name,
-      email,
+      email: user ? user.email : email,
       role: "employee",
       status: "Varified",
       password,
