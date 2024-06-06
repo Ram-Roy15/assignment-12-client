@@ -1,10 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import useRole from "../../hooks/useRole";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
+  const [role, isLoading] = useRole();
+  console.log(role);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   const navLinks = (
     <div className="flex items-center gap-3">
       <Link to={"/"}>
@@ -12,17 +18,21 @@ const Navbar = () => {
           <a>Home</a>
         </button>
       </Link>
-      <Link to={"/join-employees"}>
-        <button className="btn bg-[#0545ab] text-white font-bold btn-sm outline-[#0545ab] border-[#0545ab] ">
-          Join as Employee
-        </button>
-      </Link>
-      <Link to={"/join-manager"}>
-        <button className="btn bg-[#0545ab] text-white font-bold btn-sm outline-[#0545ab] border-[#0545ab] ">
-          Join as Manager
-        </button>
-      </Link>
-      {user && (
+      {!user && (
+        <>
+          <Link to={"/join-employees"}>
+            <button className="btn bg-[#0545ab] text-white font-bold btn-sm outline-[#0545ab] border-[#0545ab] ">
+              Join as Employee
+            </button>
+          </Link>
+          <Link to={"/join-manager"}>
+            <button className="btn bg-[#0545ab] text-white font-bold btn-sm outline-[#0545ab] border-[#0545ab] ">
+              Join as Manager
+            </button>
+          </Link>
+        </>
+      )}
+      {/* {role === "employee" && (
         <>
           <Link to={"/"}>
             <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
@@ -32,6 +42,25 @@ const Navbar = () => {
           <Link to={"/"}>
             <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
               <a>My Team</a>
+            </button>
+          </Link>
+        </>
+      )} */}
+      {role === "manager" && (
+        <>
+          <Link to={"/"}>
+            <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
+              <a> Assets List</a>
+            </button>
+          </Link>
+          <Link to={"/"}>
+            <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
+              <a>Add an Asset</a>
+            </button>
+          </Link>
+          <Link to={"/"}>
+            <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
+              <a>All Requests</a>
             </button>
           </Link>
         </>
@@ -106,7 +135,61 @@ const Navbar = () => {
             </Link>
           </div>
         )}
-        {user && (
+
+        {role === "manager" && (
+          <div className="dropdown z-10 dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost  rounded-md btn-circle avatar"
+            >
+              <div title={user.displayName} className="w-10 rounded-full">
+                <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content  drop-shadow-md mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-60"
+            >
+              <h1 className="mb-2 bg-[#f79902] shadow-xl p-3 rounded-md">
+                <p className="text-center  uppercase font-bold">{user.email}</p>
+              </h1>
+              <Link
+                to={"/"}
+                className="btn bg-[#0545ab] text-white btn-sm font-bold"
+              >
+                Custom Request List
+              </Link>
+              <Link
+                to={"/"}
+                className="btn bg-[#0545ab] text-white btn-sm font-bold"
+              >
+                My Employee List
+              </Link>
+              <Link
+                to={"/"}
+                className="btn bg-[#0545ab] text-white btn-sm font-bold"
+              >
+                Add an Employee
+              </Link>
+              <Link
+                to={"/profile"}
+                className="btn bg-[#0545ab] text-white btn-sm font-bold"
+              >
+                Profile
+              </Link>
+              <li>
+                <button
+                  onClick={handleLogOut}
+                  className="btn bg-[#0545ab] text-white btn-sm font-bold"
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
+        {role === "employee" && (
           <div className="dropdown z-10 dropdown-end">
             <div
               tabIndex={0}
