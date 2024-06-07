@@ -210,7 +210,7 @@ const Navbar = () => {
                 </p>
               </h1>
               <Link
-                to={"/"}
+                to={"/requested-assets"}
                 className="btn bg-[#0545ab] text-white  md:w-56 btn-sm font-bold"
               >
                 Request for an Assets

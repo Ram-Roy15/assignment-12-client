@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
 import PrivateRouter from "./PrivateRouter";
 import AddAssets from "../pages/HR_Pages/AddAssets";
+import RequestedAssets from "../pages/EmployeePages/RequestedAssets";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <AddAssets></AddAssets>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/requested-assets",
+        element: (
+          <PrivateRouter>
+            <RequestedAssets></RequestedAssets>
           </PrivateRouter>
         ),
       },

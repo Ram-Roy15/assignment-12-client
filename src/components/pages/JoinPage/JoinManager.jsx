@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import ReactDatePicker from "react-datepicker";
 import { useState } from "react";
-import Select from "react-select";
+
 import useAxiosCommon from "../../hooks/useAxiosCommon";
 const JoinManager = () => {
   const {
@@ -20,17 +20,13 @@ const JoinManager = () => {
   const [startDate, setStartDate] = useState(new Date());
   const axiosCommon = useAxiosCommon();
   const navigate = useNavigate();
-  const options = [
-    { value: "chocolate", label: "5 Members for $5" },
-    { value: "strawberry", label: "10 Members for $8" },
-    { value: "vanilla", label: "20 Members for $15" },
-  ];
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const username = form.username.value;
     const company = form.company_name.value;
-
+    const pagages = form.type.value;
     const email = form.email.value;
     const password = form.password.value;
     const image = form.image.files[0];
@@ -39,6 +35,7 @@ const JoinManager = () => {
       username,
       email: user ? user.email : email,
       img_url,
+      pagages,
       company,
       role: "manager",
       startDate,
@@ -165,10 +162,16 @@ const JoinManager = () => {
               <label htmlFor="options" className="text-sm mb-2">
                 Select a Package
               </label>
-              <Select
-                className="w-full  border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
-                options={options}
-              />
+              <select
+                name="type"
+                id="type"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
+              >
+                <option value="retunrable">Returnable</option>
+                <option value="non_returnable">Non_Returnable</option>
+                <option value="non_returnable">Non_Returnable</option>
+                <option value="non_returnable">Non_Returnable</option>
+              </select>
             </div>
           </div>
 
