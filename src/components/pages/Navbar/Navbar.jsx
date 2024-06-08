@@ -33,7 +33,7 @@ const Navbar = () => {
       )}
       {role === "manager" && (
         <>
-          <Link to={"/"}>
+          <Link to={"/my-list"}>
             <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
               <a> Assets List</a>
             </button>

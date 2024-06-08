@@ -1,27 +1,10 @@
 import { useState } from "react";
 import useServices from "../services/useServices";
-import {
-  Button,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-  Transition,
-  TransitionChild,
-} from "@headlessui/react";
 
-const RequestedAssets = () => {
+const AssetsLists = () => {
   const [search, setSearch] = useState("");
   const services = useServices(search);
   console.log(services);
-  let [isOpen, setIsOpen] = useState(false);
-
-  function open() {
-    setIsOpen(true);
-  }
-
-  function close() {
-    setIsOpen(false);
-  }
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -68,28 +51,39 @@ const RequestedAssets = () => {
                           scope="col"
                           className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                         >
-                          Asset Name
+                          Product Name
                         </th>
 
                         <th
                           scope="col"
                           className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                         >
-                          Availability
+                          Product Quantity
                         </th>
 
                         <th
                           scope="col"
                           className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                         >
-                          Assets Type
+                          Product Type
                         </th>
-
                         <th
                           scope="col"
                           className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                         >
-                          Request button
+                          Added Date
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        >
+                          Update Button
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        >
+                          Delete Button
                         </th>
 
                         <th scope="col" className="relative py-3.5 px-4">
@@ -111,23 +105,8 @@ const RequestedAssets = () => {
                                   : "bg-red-50 text-red-700"
                               } dark:bg-gray-800`}
                             >
-                              <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 12 12"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M10 3L4.5 8.5L2 6"
-                                  stroke="currentColor"
-                                />
-                              </svg>
-
                               <h2 className="text-sm font-normal">
-                                {service.quantity > 0
-                                  ? "Available"
-                                  : "Out of Stock"}
+                                {service.quantity}
                               </h2>
                             </div>
                           </td>
@@ -139,59 +118,17 @@ const RequestedAssets = () => {
 
                           <td className="px-4 py-4 text-sm whitespace-nowrap">
                             <div className="flex items-center gap-x-6">
-                              <Button
-                                onClick={open}
-                                className="text-blue-500 btn btn-sm transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
-                                disabled={service.quantity <= 0}
-                              >
-                                Request
-                              </Button>
-                              <Transition appear show={isOpen}>
-                                <Dialog
-                                  as="div"
-                                  className="relative z-100 focus:outline-none"
-                                  onClose={close}
-                                  __demoMode
-                                >
-                                  <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                                    <div className="flex min-h-full items-center justify-center p-4">
-                                      <TransitionChild
-                                        enter="ease-out duration-300"
-                                        enterFrom="opacity-0 transform-[scale(95%)]"
-                                        enterTo="opacity-100 transform-[scale(100%)]"
-                                        leave="ease-in duration-200"
-                                        leaveFrom="opacity-100 transform-[scale(100%)]"
-                                        leaveTo="opacity-0 transform-[scale(95%)]"
-                                      >
-                                        <DialogPanel className="w-full max-w-md rounded-xl bg-[#0545ab] backdrop-blur-2xl p-6 ">
-                                          <DialogTitle
-                                            as="h3"
-                                            className="text-base/7 font-medium text-white"
-                                          >
-                                            Payment successful
-                                          </DialogTitle>
-                                          <form>
-                                            <textarea
-                                              className="w-full"
-                                              name="textfield"
-                                              id=""
-                                              type="text"
-                                              placeholder="Enter your opinion"
-                                            ></textarea>
-                                          </form>
-                                          <button
-                                            type="submit"
-                                            className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
-                                            onClick={close}
-                                          >
-                                            Got it, thanks!
-                                          </button>
-                                        </DialogPanel>
-                                      </TransitionChild>
-                                    </div>
-                                  </div>
-                                </Dialog>
-                              </Transition>
+                              {service.startDate}
+                            </div>
+                          </td>
+                          <td className="px-4 py-4 text-sm whitespace-nowrap">
+                            <div className="flex  btn btn-sm bg-slate-400 items-center gap-x-6">
+                              Update
+                            </div>
+                          </td>
+                          <td className="px-4 py-4 text-sm whitespace-nowrap">
+                            <div className="flex  btn btn-sm bg-red-400 items-center gap-x-6">
+                              Delete
                             </div>
                           </td>
                         </tr>
@@ -289,4 +226,4 @@ const RequestedAssets = () => {
   );
 };
 
-export default RequestedAssets;
+export default AssetsLists;

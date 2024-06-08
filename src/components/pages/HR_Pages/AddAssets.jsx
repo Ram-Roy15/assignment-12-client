@@ -1,21 +1,26 @@
 import { TbFidgetSpinner } from "react-icons/tb";
 import useAuth from "../../hooks/useAuth";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import useAxiosCommon from "../../hooks/useAxiosCommon";
+import { useState } from "react";
 
 const AssetsAdd = () => {
   const { loading, setLoading, user } = useAuth();
+  const [startDate, setStartDate] = useState(new Date().toDateString());
   const axiosCommon = useAxiosCommon();
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
     const name = e.target.name.value;
     const type = e.target.type.value;
+
     const quantity = e.target.quantity.value;
-    console.log(name, type, quantity);
+    console.log(name, startDate, type, quantity);
     const data = {
       email: user?.email,
       name,
+      startDate,
       type,
       quantity,
     };
@@ -77,6 +82,17 @@ const AssetsAdd = () => {
               className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
               data-temp-mail-org="0"
             />
+          </div>
+          <div>
+            <label htmlFor="email" className="block mb-2 text-sm">
+              Date
+            </label>
+            <div>
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
+            </div>
           </div>
         </div>
 
