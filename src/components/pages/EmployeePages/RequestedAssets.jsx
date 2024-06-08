@@ -22,6 +22,13 @@ const RequestedAssets = () => {
   function close() {
     setIsOpen(false);
   }
+  // const handlClose = (e) => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const text = form.textfield.value;
+  //   setIsOpen(false);
+  //   console.log(text);
+  // };
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -170,20 +177,22 @@ const RequestedAssets = () => {
                                           >
                                             Payment successful
                                           </DialogTitle>
-                                          <p className="mt-2 text-sm/6  text-white">
-                                            Your payment has been successfully
-                                            submitted. We’ve sent you an email
-                                            with all of the details of your
-                                            order.
-                                          </p>
-                                          <div className="mt-4">
-                                            <Button
-                                              className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
-                                              onClick={close}
-                                            >
-                                              Got it, thanks!
-                                            </Button>
-                                          </div>
+                                          <form>
+                                            <textarea
+                                              className="w-full"
+                                              name="textfield"
+                                              id=""
+                                              type="text"
+                                              placeholder="Enter your opinion"
+                                            ></textarea>
+                                          </form>
+                                          <button
+                                            type="submit"
+                                            className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+                                            onClick={close}
+                                          >
+                                            Got it, thanks!
+                                          </button>
                                         </DialogPanel>
                                       </TransitionChild>
                                     </div>

@@ -9,6 +9,7 @@ import Profile from "../pages/Profile/Profile";
 import PrivateRouter from "./PrivateRouter";
 import AddAssets from "../pages/HR_Pages/AddAssets";
 import RequestedAssets from "../pages/EmployeePages/RequestedAssets";
+import MyTeam from "../pages/EmployeePages/MyTeam";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <RequestedAssets></RequestedAssets>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/my-team",
+        element: (
+          <PrivateRouter>
+            <MyTeam></MyTeam>
           </PrivateRouter>
         ),
       },

@@ -58,7 +58,7 @@ const Navbar = () => {
               <a>My Assets</a>
             </button>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/my-team"}>
             <button className="btn bg-[#0545ab] text-center w-32 text-white outline-[#0545ab] border-[#0545ab] btn-sm">
               <a>My Team</a>
             </button>

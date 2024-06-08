@@ -8,6 +8,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import useAxiosCommon from "../../hooks/useAxiosSecure";
+import { imageUpload } from "../../utils";
 
 const JoinEmployee = () => {
   const {
@@ -28,9 +29,12 @@ const JoinEmployee = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const image = form.image.files[0];
+    const img_url = await imageUpload(image);
     const date = startDate.selected;
     const employee = {
       name,
+      img_url,
       email: user ? user.email : email,
       role: "employee",
       status: "Varified",
@@ -126,6 +130,18 @@ const JoinEmployee = () => {
                 required
                 placeholder="*******"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
+              />
+            </div>
+            <div>
+              <label htmlFor="image" className="block mb-2 text-sm">
+                Company Logo
+              </label>
+              <input
+                required
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
               />
             </div>
             <div>
