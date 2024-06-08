@@ -161,7 +161,7 @@ const Navbar = () => {
                 Custom Request List
               </Link>
               <Link
-                to={"/"}
+                to={"/my-employee"}
                 className="btn bg-[#0545ab] text-white md:w-56  btn-sm  font-bold"
               >
                 My Employee List

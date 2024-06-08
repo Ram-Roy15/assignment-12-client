@@ -53,7 +53,7 @@ const JoinEmployee = () => {
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error(error);
     }
   };
   const loginWithGoogle = async () => {
@@ -134,7 +134,7 @@ const JoinEmployee = () => {
             </div>
             <div>
               <label htmlFor="image" className="block mb-2 text-sm">
-                Company Logo
+                profile photo
               </label>
               <input
                 required
