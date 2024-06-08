@@ -12,6 +12,7 @@ import LimittedStock from "../../root/LimittedStock";
 import ParcentagePage from "../../root/ParcentagePage";
 import ExtraSection1 from "../../root/ExtraSection1";
 import ExtraSection2 from "../../root/ExtraSection2";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const [role, isLoading] = useRole();
@@ -22,6 +23,9 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       {role === "employee" && (
         <>
           <MyPendingRequest></MyPendingRequest>

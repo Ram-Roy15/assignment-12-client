@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosCommon from "../../hooks/useAxiosCommon";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const AssetsAdd = () => {
   const { loading, setLoading, user } = useAuth();
@@ -36,6 +37,9 @@ const AssetsAdd = () => {
 
   return (
     <div className="max-w-md mx-auto mt-10  bg-base-100 p-8 rounded-md shadow-md">
+      <Helmet>
+        <title>Add assets</title>
+      </Helmet>
       <h1 className="text-2xl text-center font-bold mb-4">Add Product</h1>
       <form
         onSubmit={handleSubmit}

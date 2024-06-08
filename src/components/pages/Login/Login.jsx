@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { TbFidgetSpinner } from "react-icons/tb";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { loading, signIn, signInWithGoogle, setLoading } = useAuth();
@@ -37,6 +38,9 @@ const Login = () => {
   };
   return (
     <div className="flex justify-center items-center min-h-screen">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Log In</h1>

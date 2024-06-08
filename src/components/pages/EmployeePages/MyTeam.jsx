@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { axiosCommon } from "../../hooks/useAxiosCommon";
+import { Helmet } from "react-helmet-async";
 
 const MyTeam = () => {
   const [team, setTeam] = useState();
@@ -13,6 +14,9 @@ const MyTeam = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>My team</title>
+      </Helmet>
       <section className="container px-4 mx-auto">
         <div className="flex flex-col">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

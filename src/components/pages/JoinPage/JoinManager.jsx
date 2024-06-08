@@ -8,6 +8,7 @@ import ReactDatePicker from "react-datepicker";
 import { useState } from "react";
 
 import useAxiosCommon from "../../hooks/useAxiosCommon";
+import { Helmet } from "react-helmet-async";
 const JoinManager = () => {
   const {
     createUser,
@@ -64,6 +65,9 @@ const JoinManager = () => {
   };
   return (
     <div className="flex justify-center items-center min-h-screen">
+      <Helmet>
+        <title>Join HR</title>
+      </Helmet>
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Join as HR Manager</h1>

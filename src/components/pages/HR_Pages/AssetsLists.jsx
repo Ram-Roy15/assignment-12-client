@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useServices from "../services/useServices";
+import { Helmet } from "react-helmet-async";
 
 const AssetsLists = () => {
   const [search, setSearch] = useState("");
@@ -14,6 +15,9 @@ const AssetsLists = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Assets Lists</title>
+      </Helmet>
       <div>
         <h1 className="text-center  text text-2xl font-bold text-gray-700 mt-5 uppercase ">
           my requested assets

@@ -8,6 +8,7 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
+import { Helmet } from "react-helmet-async";
 
 const RequestedAssets = () => {
   const [search, setSearch] = useState("");
@@ -31,6 +32,9 @@ const RequestedAssets = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Request Assets</title>
+      </Helmet>
       <div>
         <h1 className="text-center  text text-2xl font-bold text-gray-700 mt-5 uppercase ">
           my requested assets

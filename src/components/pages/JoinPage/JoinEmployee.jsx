@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import useAxiosCommon from "../../hooks/useAxiosSecure";
 import { imageUpload } from "../../utils";
+import { Helmet } from "react-helmet-async";
 
 const JoinEmployee = () => {
   const {
@@ -78,6 +79,9 @@ const JoinEmployee = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
+      <Helmet>
+        <title>Join Employee</title>
+      </Helmet>
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Join as a Employee</h1>
