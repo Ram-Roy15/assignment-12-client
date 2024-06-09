@@ -2,13 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
+import LoadingSpinner from "../Profile/LoadingSpinner/LoadingSpinner";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
 
   const [role, isLosding] = useRole();
-  if (isLosding) return <div>Loading...</div>;
+  if (isLosding) return <LoadingSpinner></LoadingSpinner>;
 
   const navLinks = (
     <div className="flex items-center gap-3">

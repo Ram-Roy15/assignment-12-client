@@ -13,12 +13,13 @@ import LimittedStock from "../../root/LimittedStock";
 import ExtraSection1 from "../../root/ExtraSection1";
 import ExtraSection2 from "../../root/ExtraSection2";
 import { Helmet } from "react-helmet-async";
+import LoadingSpinner from "../Profile/LoadingSpinner/LoadingSpinner";
 
 const Home = () => {
   const [role, isLoading] = useRole();
   const { user } = useAuth();
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner></LoadingSpinner>;
   }
 
   return (
