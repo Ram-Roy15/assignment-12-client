@@ -6,13 +6,13 @@ const Pakages = () => {
           <div className="flex flex-col w-full max-w-sm p-8 space-y-8 text-center bg-white border-2 border-gray-200 rounded-lg lg:mx-4 dark:bg-gray-900 dark:border-gray-700">
             <div className="flex-shrink-0">
               <h2 className="inline-flex items-center justify-center px-2 font-semibold tracking-tight text-blue-400 uppercase rounded-lg bg-gray-50 dark:bg-gray-700">
-                Employees
+                Maximum 5 employees
               </h2>
             </div>
 
             <div className="flex-shrink-0">
               <span className="pt-2 text-3xl font-bold text-gray-800 uppercase dark:text-gray-100">
-                Maximum 5 employees $5
+                $5
               </span>
             </div>
 
@@ -31,20 +31,20 @@ const Pakages = () => {
             </ul>
 
             <button className="inline-flex items-center justify-center px-4 py-2 font-medium text-white uppercase transition-colors bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none">
-              Start free
+              Subscribe
             </button>
           </div>
 
           <div className="flex flex-col w-full max-w-sm p-8 space-y-8 text-center bg-white border-2 border-gray-200 rounded-lg lg:mx-4 dark:bg-gray-900 dark:border-gray-700">
             <div className="flex-shrink-0">
               <h2 className="inline-flex items-center justify-center px-2 font-semibold tracking-tight text-blue-400 uppercase rounded-lg bg-gray-50 dark:bg-gray-700">
-                Professional
+                Maximum 10 employees
               </h2>
             </div>
 
             <div className="flex-shrink-0">
               <span className="pt-2 text-3xl font-bold text-gray-800 uppercase dark:text-gray-100">
-                $24.90
+                $8
               </span>
 
               <span className="text-gray-500 dark:text-gray-400">/month</span>
@@ -76,13 +76,13 @@ const Pakages = () => {
           <div className="flex flex-col w-full max-w-sm p-8 space-y-8 text-center bg-white border-2 border-gray-200 rounded-lg lg:mx-4 dark:bg-gray-900 dark:border-gray-700">
             <div className="flex-shrink-0">
               <h2 className="inline-flex items-center justify-center px-2 font-semibold tracking-tight text-blue-400 uppercase rounded-lg bg-gray-50 dark:bg-gray-700">
-                Expert
+                20 Membars Employee
               </h2>
             </div>
 
             <div className="flex-shrink-0">
               <span className="pt-2 text-3xl font-bold text-gray-800 uppercase dark:text-gray-100">
-                $49.90
+                $15
               </span>
 
               <span className="text-gray-500 dark:text-gray-400">/month</span>

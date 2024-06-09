@@ -1,7 +1,9 @@
+// import useServices from "../services/useServices";
+
 const MyPendingRequest = () => {
   return (
     <div>
-      <h1>my pending request here</h1>
+      <h1>My Pending Request</h1>
     </div>
   );
 };

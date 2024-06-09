@@ -9,7 +9,7 @@ import ExtraSection from "../ExtraSection/ExtraSection";
 import PandingRequest from "../HR_Pages/PandingRequest";
 import TopRequest from "../HR_Pages/TopRequest";
 import LimittedStock from "../../root/LimittedStock";
-import ParcentagePage from "../../root/ParcentagePage";
+// import ParcentagePage from "../../root/ParcentagePage";
 import ExtraSection1 from "../../root/ExtraSection1";
 import ExtraSection2 from "../../root/ExtraSection2";
 import { Helmet } from "react-helmet-async";
@@ -38,7 +38,7 @@ const Home = () => {
           <PandingRequest></PandingRequest>
           <TopRequest></TopRequest>
           <LimittedStock></LimittedStock>
-          <ParcentagePage></ParcentagePage>
+          {/* <ParcentagePage></ParcentagePage> */}
           <ExtraSection1></ExtraSection1>
           <ExtraSection2></ExtraSection2>
         </>
