@@ -25,7 +25,7 @@ const Carosel = () => {
       >
         <SwiperSlide>
           <Slide
-            image={`https://i.ibb.co/tzMgWCS/accesieus-1.jpg`}
+            image={`https://i.ibb.co/bbCQYFd/image.png`}
             text={
               "Are you looking for a great way to help others, learn new skills, gain experience, build your resume, and meet more people? Try volunteering! There are many ways you can assist those in need, whether it's in your own neighborhood or on the other side of the world. 1st Financial Bank USA believes in the importance of giving back. Here are 25 different ways to volunteer in your community."
             }
@@ -33,7 +33,7 @@ const Carosel = () => {
         </SwiperSlide>
         <SwiperSlide>
           <Slide2
-            image={"https://i.ibb.co/0DPpwp0/IPhone-Accessories.png"}
+            image={"https://i.ibb.co/16RTgdT/image.png"}
             text={
               "Volunteering can help you gain experience in skill sets that many employers want. For example, nonprofits frequently need help with accounting, marketing, event planning, and much more.Volunteering is also a great way for you to test out a new job if you arent sure you want to shift to a new career. You may not experience the full range of job duties, but it does give you a sneak peek of your possible new career"
             }
