@@ -171,10 +171,10 @@ const JoinManager = () => {
                 id="type"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#064694] bg-gray-200 text-gray-900"
               >
-                <option value="retunrable">Returnable</option>
-                <option value="non_returnable">Non_Returnable</option>
-                <option value="non_returnable">Non_Returnable</option>
-                <option value="non_returnable">Non_Returnable</option>
+                <option value="5_membars">5 membars $5</option>
+                <option value="10_membars">10 membars $8</option>
+                <option value="15_membars">15 membars $12</option>
+                <option value="20_membars">20 membars $15</option>
               </select>
             </div>
           </div>
